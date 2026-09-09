@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  color: #2f2118;
-  background: #f6f0e8;
+  color: #00FF41; 
+  background: #111111; 
   font-family: Arial, sans-serif;
 }
 
@@ -13,13 +13,14 @@ body {
 
 .hero {
   padding: 36px;
-  color: white;
-  background: #6f3b1f;
+  color: #FFFFFF; 
+  background: #1E4D2B; 
   border-radius: 24px;
 }
 
 .eyebrow {
   margin: 0 0 8px;
+  color: #00FF41; 
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -30,10 +31,15 @@ body {
 
 button {
   padding: 12px 18px;
-  color: #2f2118;
+  color: #FFFFFF; 
   font-weight: 700;
   cursor: pointer;
-  background: #ffd166;
-  border: 0;
+  background: #0B6623;
+  border: 1px solid #00FF41; 
   border-radius: 999px;
+}
+
+button:hover {
+  background: #00FF41;
+  color: #111111;
 }
