@@ -7,23 +7,54 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <main class="page">
-      <section class="hero">
+    <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Navigasi utama">
+        <a class="brand" href="index.html">Teh Saha</a>
+        <ul>
+          <li><a aria-current="page" href="index.html">Beranda</a></li>
+          <li><a href="tentang.html">Tentang Kami</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="konten" class="page">
+      <section class="hero" aria-labelledby="hero-title">
         <p class="eyebrow">UMKM Pemalang</p>
-        <h1>Teh Saha</h1>
+        <h1 id="hero-title">Teh Saha</h1>
         <p>Teh lokal pilihan untuk teman belajar, bekerja, dan berdiskusi.</p>
         <button id="promoButton" type="button">Lihat promo hari ini</button>
+        <img src="assets/images/etalase-teh.svg" alt="Etalase Teh Saha" />
       </section>
 
       <section aria-labelledby="produk-title">
         <h2 id="produk-title">Produk Unggulan</h2>
-        <ul class="products">
-          <li>Java Tea Script - Rp10.000 : Es teh melati khas Jawa dengan paduan susu evaporasi dan sirup gula aren murni.</li>
-          <li>Error 404 Tea (Sugar Not Found) - Rp5.000 : Es teh lemon segar tanpa gula (zero sugar) yang melegakan tenggorokan.</li>
-          <li>Localhost Tea - Rp7.500 : Es teh manis original andalan mahasiswa, pilihan basic yang selalu menyegarkan.</li>
-        </ul>
+        <div class="product-list">
+          <article class="product-card">
+            <h3>Java Tea Script</h3>
+            <p>➥ Es teh melati khas Jawa dengan paduan susu evaporasi dan sirup gula aren murni.</p>
+            <p class="price">Rp10.000</p>
+          </article>
+          <article class="product-card">
+            <h3>Error 404 Tea (Sugar Not Found)</h3>
+            <p>➥ Es teh lemon segar tanpa gula (zero sugar) yang melegakan tenggorokan.</p>
+            <p class="price">Rp5.000</p>
+          </article>
+          <article class="product-card">
+            <h3>Localhost Tea</h3>
+            <p>➥ Es teh manis original andalan mahasiswa, pilihan basic yang selalu menyegarkan.</p>
+            <p class="price">Rp7.500</p>
+          </article>
+        </div>
       </section>
     </main>
+
+    <!-- Footer Tambahan -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Teh Saha. Data pada halaman ini bersifat dummy.</p>
+    </footer>
+
     <script src="js/script.js"></script>
   </body>
 </html>
