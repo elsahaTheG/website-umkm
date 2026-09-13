@@ -55,3 +55,31 @@ button:hover {
 a:focus-visible,
 button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
 .site-footer { padding: 24px 20px; color: white; text-align: center; background: #2f2118; }
+
+/* Penambahan CSS untuk Kontak Singkat */
+.contact-section {
+  margin-top: 40px;
+  padding: 24px;
+  background: #1a1a1a;
+  border-left: 4px solid #00FF41;
+  border-radius: 8px;
+}
+
+.contact-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.contact-section li {
+  margin-bottom: 12px;
+}
+
+.contact-section a {
+  color: #00FF41;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-section a:hover {
+  color: #FFFFFF;
+}
