@@ -83,3 +83,42 @@ button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
 .contact-section a:hover {
   color: #FFFFFF;
 }
+
+img { max-width: 100%; height: auto; }
+figure { margin: 0 0 24px; }
+figcaption { margin-top: 8px; color: #FFFFFF; }
+table { width: 100%; border-collapse: collapse; }
+caption { margin-bottom: 8px; font-weight: 700; text-align: left; }
+th,
+td { padding: 10px; text-align: left; border: 1px solid #00FF41; }
+
+section[aria-labelledby="katalog-visual-title"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+section[aria-labelledby="katalog-visual-title"] > h2 {
+  width: 100%;
+}
+
+section[aria-labelledby="katalog-visual-title"] .product-figure {
+  flex: 1 1 calc(25% - 15px);
+  box-sizing: border-box;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+img { 
+  max-width: 100%; 
+  height: auto; 
+  display: block;
+  border-radius: 8px;
+}
+
+figcaption {
+  margin-top: 8px;
+  color: #FFFFFF;
+  text-align: center; 
+}
