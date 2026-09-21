@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  color: #00FF41; 
-  background: #111111; 
+  color: #ffffff; 
+  background: #302f2f; 
   font-family: Arial, sans-serif;
 }
 
@@ -20,7 +20,7 @@ body {
 
 .eyebrow {
   margin: 0 0 8px;
-  color: #00FF41; 
+  color: #ffffff; 
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -35,37 +35,60 @@ button {
   font-weight: 700;
   cursor: pointer;
   background: #0B6623;
-  border: 1px solid #00FF41; 
+  border: 1px solid #0B6623; 
   border-radius: 999px;
 }
 
 button:hover {
-  background: #00FF41;
-  color: #111111;
+  background: #0B6623;
+  color: #302f2f;
 }
 
-.skip-link { position: absolute; left: -9999px; padding: 8px 12px; color: white; background: #2f2118; }
+.skip-link { position: absolute; left: -9999px; padding: 8px 12px; color: white; background: #0B6623; }
 .skip-link:focus { top: 8px; left: 8px; }
-.site-header { padding: 16px 20px; background: white; border-bottom: 1px solid #dccbbc; }
+.site-header { padding: 16px 20px; background: #1E4D2B; border-bottom: 1px solid #dccbbc; }
 .nav { max-width: 920px; margin: 0 auto; }
 .brand { display: inline-block; margin-bottom: 8px; color: #4b2715; font-weight: 800; text-decoration: none; }
 .nav ul { padding: 0; margin: 0; list-style: none; }
 .nav li { display: inline-block; margin-right: 12px; }
-.nav a[aria-current="page"] { font-weight: 800; }
+
+.nav a {
+  color: #ffffff; 
+  text-decoration: none;
+}
+.nav a:hover {
+  color: #ffffff; 
+}
+.nav a[aria-current="page"] { 
+  color: #ffffff; 
+  font-weight: 800; 
+  border-bottom: 2px solid #ffffff; 
+}
+
+section[aria-labelledby="produk-title"] {
+  color: #FFFFFF;
+  background: #1a1a1a;
+  padding: 24px;
+  border-left: 8px solid #0B6623;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
 a:focus-visible,
 button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
-.site-footer { padding: 24px 20px; color: white; text-align: center; background: #2f2118; }
+.site-footer { padding: 24px 20px; color: white; text-align: center; background: #1E4D2B; }
 
-/* Penambahan CSS untuk Kontak Singkat */
 .contact-section {
+  color: #FFFFFF;
   margin-top: 40px;
   padding: 24px;
-  background: #1a1a1a;
-  border-left: 4px solid #00FF41;
+  background: #1E4D2B;
+  border-left: 8px solid #0B6623;
   border-radius: 8px;
 }
 
 .contact-section ul {
+  color: #FFFFFF;
   list-style-type: none;
   padding-left: 0;
 }
@@ -75,13 +98,16 @@ button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
 }
 
 .contact-section a {
-  color: #00FF41;
+  color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
 .contact-section a:hover {
   color: #FFFFFF;
+}
+section {
+  margin-bottom: 32px; 
 }
 
 img { max-width: 100%; height: auto; }
@@ -90,7 +116,7 @@ figcaption { margin-top: 8px; color: #FFFFFF; }
 table { width: 100%; border-collapse: collapse; }
 caption { margin-bottom: 8px; font-weight: 700; text-align: left; }
 th,
-td { padding: 10px; text-align: left; border: 1px solid #00FF41; }
+td { padding: 10px; text-align: left; border: 1px solid #0B6623; }
 
 section[aria-labelledby="katalog-visual-title"] {
   display: flex;
@@ -122,3 +148,8 @@ figcaption {
   color: #FFFFFF;
   text-align: center; 
 }
+
+.field { margin-bottom: 16px; }
+.field label { display: block; margin-bottom: 6px; }
+fieldset { margin: 0 0 16px; }
+#preview-form { padding: 16px; white-space: pre-wrap; background: white; border: 1px solid #dccbbc; color: #000000;}
