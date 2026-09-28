@@ -1,94 +1,235 @@
-body {
-  margin: 0;
-  color: #ffffff; 
-  background: #302f2f; 
-  font-family: Arial, sans-serif;
+:root {
+  --color-primary: #008f39;           
+  --color-primary-strong: #1a4a2b;   
+  --color-text: #ffffff;             
+  --color-text-inverted: #302f2f;    
+  --color-muted: #a3a3a3;            
+  --color-surface: #2b2b2b;          
+  --color-surface-soft: #202020;     
+  --color-border: #1a4a2b;           
+  --color-focus: #2563eb;            
+  --color-surface-white: #ffffff;    
+  
+  /* [KETENTUAN 1] Revisi & Tambahan Token Warna Berbasis Fungsi */
+  --color-primary-hover: #00702c;    /* Token warna hover untuk interaksi */
+  --color-surface-muted: #1f3324;    /* Token warna permukaan sekunder kartu */
+  --color-accent: #f59e0b;           /* Token warna aksen tambahan */
+
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  
+  /* [KETENTUAN 2] Penambahan Pasangan Token Spacing & Radius Baru */
+  --space-md: 1.25rem;               /* Token spacing baru */
+  --radius-pill: 50px;               /* Token radius bentuk kapsul baru */
+
+  --shadow-card: 0 0.5rem 1.5rem rgb(0 0 0 / 0.2);
 }
 
-.page {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 32px 20px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html { 
+  color-scheme: dark; 
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background: var(--color-surface); 
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+img { 
+  max-width: 100%; 
+  height: auto; 
+  display: block;
+  border-radius: 8px;
+}
+
+a { 
+  color: var(--color-text); 
+}
+
+a:hover { 
+  color: var(--color-primary); 
+}
+
+:focus-visible { 
+  outline: 3px solid var(--color-focus); 
+  outline-offset: 3px; 
+}
+
+.skip-link { 
+  position: absolute; 
+  top: -5rem; 
+  left: var(--space-3); 
+  padding: var(--space-2) var(--space-3); 
+  color: var(--color-surface); 
+  background: var(--color-text);
+}
+
+.skip-link:focus { 
+  top: var(--space-3); 
+}
+
+.site-header,
+.site-footer {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-primary-strong); 
+  border-bottom: 1px solid var(--color-primary-strong);
+}
+
+.site-footer {
+  margin-top: var(--space-5);
+  color: var(--color-text);
+  text-align: center;
+  border-top: 1px solid var(--color-primary-strong);
+  border-bottom: 0;
+}
+
+.nav,
+.page { 
+  width: min(100% - 2rem, 60rem); 
+  margin-inline: auto; 
+}
+
+.page { 
+  padding-block: var(--space-5); 
+}
+
+.brand {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.nav ul { 
+  padding: 0; 
+  margin: 0; 
+  list-style: none; 
+}
+
+.nav li { 
+  display: inline-block; 
+  margin: 0 var(--space-2) var(--space-1) 0; 
+}
+
+.nav a[aria-current="page"] {
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-text);
+  font-weight: 800;
+  text-decoration: none;
+  background: transparent;
+  border-bottom: 2px solid var(--color-text); 
+  border-radius: 0;
+}
+
+h1, h2, h3 { 
+  line-height: 1.2; 
+  text-wrap: balance; 
+}
+
+h1 { 
+  font-size: clamp(2rem, 6vw, 3rem); 
+}
+
+p, li { 
+  max-width: 68ch; 
 }
 
 .hero {
-  padding: 36px;
-  color: #FFFFFF; 
-  background: #1E4D2B; 
-  border-radius: 24px;
+  padding: var(--space-5);
+  color: var(--color-text);
+  background: var(--color-primary-strong); 
+  border-radius: var(--radius-md);
 }
 
 .eyebrow {
-  margin: 0 0 8px;
-  color: #ffffff; 
-  letter-spacing: 0.14em;
+  color: var(--color-text); 
+  font-weight: 800; 
+  letter-spacing: 0.08em; 
   text-transform: uppercase;
+}
+
+.hero .eyebrow { 
+  color: var(--color-text); 
+}
+
+.price { 
+  color: var(--color-text); 
+  font-weight: 800; 
+}
+
+/* [KETENTUAN 3 - Komponen 1: Tombol] Menggunakan token warna, spacing, & radius baru */
+.button,
+button {
+  display: inline-block;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  background: var(--color-primary); 
+  border: 0;
+  border-radius: var(--radius-pill); /* Menerapkan token radius pill */
+}
+
+.button:hover,
+button:hover { 
+  color: var(--color-text); 
+  background: var(--color-primary-hover); /* Menerapkan token warna hover baru */
+}
+
+.hero button { 
+  color: var(--color-text); 
+  background: var(--color-primary); 
+  padding: var(--space-md) calc(var(--space-md) * 1.5); /* Menerapkan token spacing baru */
+  border-radius: var(--radius-pill);
+}
+
+.hero button:hover { 
+  color: var(--color-text); 
+  background: var(--color-primary-hover); 
 }
 
 .products {
   padding-left: 1.2rem;
 }
 
-button {
-  padding: 12px 18px;
-  color: #FFFFFF; 
-  font-weight: 700;
-  cursor: pointer;
-  background: #0B6623;
-  border: 1px solid #0B6623; 
-  border-radius: 999px;
-}
-
-button:hover {
-  background: #0B6623;
-  color: #302f2f;
-}
-
-.skip-link { position: absolute; left: -9999px; padding: 8px 12px; color: white; background: #0B6623; }
-.skip-link:focus { top: 8px; left: 8px; }
-.site-header { padding: 16px 20px; background: #1E4D2B; border-bottom: 1px solid #dccbbc; }
-.nav { max-width: 920px; margin: 0 auto; }
-.brand { display: inline-block; margin-bottom: 8px; color: #4b2715; font-weight: 800; text-decoration: none; }
-.nav ul { padding: 0; margin: 0; list-style: none; }
-.nav li { display: inline-block; margin-right: 12px; }
-
-.nav a {
-  color: #ffffff; 
-  text-decoration: none;
-}
-.nav a:hover {
-  color: #ffffff; 
-}
-.nav a[aria-current="page"] { 
-  color: #ffffff; 
-  font-weight: 800; 
-  border-bottom: 2px solid #ffffff; 
-}
-
 section[aria-labelledby="produk-title"] {
-  color: #FFFFFF;
+  color: var(--color-text);
   background: #1a1a1a;
   padding: 24px;
-  border-left: 8px solid #0B6623;
+  border-left: 8px solid var(--color-primary);
   border-radius: 12px;
   margin-bottom: 24px;
 }
 
-a:focus-visible,
-button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
-.site-footer { padding: 24px 20px; color: white; text-align: center; background: #1E4D2B; }
-
 .contact-section {
-  color: #FFFFFF;
+  color: var(--color-text);
   margin-top: 40px;
   padding: 24px;
-  background: #1E4D2B;
-  border-left: 8px solid #0B6623;
+  background: var(--color-primary-strong);
+  border-left: 8px solid var(--color-primary);
   border-radius: 8px;
 }
 
 .contact-section ul {
-  color: #FFFFFF;
+  color: var(--color-text);
   list-style-type: none;
   padding-left: 0;
 }
@@ -98,25 +239,58 @@ button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
 }
 
 .contact-section a {
-  color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-.contact-section a:hover {
-  color: #FFFFFF;
-}
 section {
   margin-bottom: 32px; 
 }
 
-img { max-width: 100%; height: auto; }
-figure { margin: 0 0 24px; }
-figcaption { margin-top: 8px; color: #FFFFFF; }
-table { width: 100%; border-collapse: collapse; }
-caption { margin-bottom: 8px; font-weight: 700; text-align: left; }
+/* [KETENTUAN 3 - Komponen 2: Kartu Produk] Menggunakan token warna, spacing, & radius baru */
+.product-card,
+.media-card,
+table,
+form {
+  margin-block: var(--space-3);
+  padding: var(--space-md);                   /* Menerapkan token spacing baru */
+  background: var(--color-surface-muted);     /* Menerapkan token warna permukaan sekunder baru */
+  border: 1px solid var(--color-primary); 
+  border-radius: var(--radius-pill);          /* Menerapkan token radius pill baru */
+  box-shadow: var(--shadow-card);
+}
+
+figure { 
+  margin-inline: 0; 
+}
+
+figcaption,
+caption { 
+  color: var(--color-text); 
+}
+
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  border-radius: 0; 
+}
+
+caption { 
+  margin-bottom: var(--space-2); 
+  font-weight: 700; 
+  text-align: left; 
+}
+
 th,
-td { padding: 10px; text-align: left; border: 1px solid #0B6623; }
+td { 
+  padding: var(--space-2); 
+  text-align: left; 
+  border: 1px solid var(--color-border); 
+}
+
+th { 
+  background: var(--color-surface-soft); 
+}
 
 section[aria-labelledby="katalog-visual-title"] {
   display: flex;
@@ -136,20 +310,126 @@ section[aria-labelledby="katalog-visual-title"] .product-figure {
   text-align: center;
 }
 
-img { 
+.field { 
+  margin-bottom: var(--space-3); 
+}
+
+.field label,
+legend { 
+  display: block; 
+  margin-bottom: var(--space-1); 
+  font-weight: 700; 
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: var(--space-2);
+  color: inherit;
+  font: inherit;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+input[type="radio"],
+input[type="checkbox"] { 
+  width: auto; 
+}
+
+fieldset {
+  margin: 0 0 var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+audio { 
   max-width: 100%; 
-  height: auto; 
-  display: block;
-  border-radius: 8px;
 }
 
-figcaption {
-  margin-top: 8px;
-  color: #FFFFFF;
-  text-align: center; 
+#preview-form {
+  padding: var(--space-3);
+  white-space: pre-wrap;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
 }
 
-.field { margin-bottom: 16px; }
-.field label { display: block; margin-bottom: 6px; }
-fieldset { margin: 0 0 16px; }
-#preview-form { padding: 16px; white-space: pre-wrap; background: white; border: 1px solid #dccbbc; color: #000000;}
+.site-footer p {
+  max-width: none;
+  margin: 0 auto;
+}
+
+thead th { 
+  background: var(--color-primary-strong); 
+  border: 1px solid #000000; 
+}
+
+tbody th,
+tbody td {
+  background: #1a1a1a; 
+}
+
+section[aria-labelledby="tentang-title"] {
+  background: #1a4a2b;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+section[aria-labelledby="nilai-title"] {
+  background: #1a1a1a;
+  padding: 24px;       
+  border-left: 8px solid var(--color-primary);
+  border-radius: 12px; 
+}
+
+.intro-produk {
+  background: #1a4a2b; 
+  padding: 24px 32px;  
+  border-radius: 12px; 
+  margin-bottom: 32px; 
+}
+
+.intro-produk h1 {
+  margin-top: 0;
+}
+.intro-produk p {
+  margin-bottom: 0;
+}
+
+section[aria-labelledby="kategori-title"] {
+  background: #1a1a1a;
+  padding: 24px;
+  border-left: 8px solid var(--color-primary);
+  border-radius: 12px;
+}
+
+section[aria-labelledby="katalog-visual-title"] {
+  background: #1a4a2b;
+  padding: 24px;       
+  border-left: 8px solid var(--color-primary);
+  border-radius: 12px; 
+}
+
+section[aria-labelledby="harga-title"] {
+  background: #1a1a1a; 
+  padding: 24px;       
+  border-left: 8px solid var(--color-primary);
+  border-radius: 12px; 
+  margin-bottom: 32px; 
+}
+
+section[aria-labelledby="kontak-title"] {
+  background: #1a1a1a;
+  padding: 24px;       
+  border-radius: 12px; 
+}
+
+section[aria-labelledby="preview-title"] {
+  background: #1a4a2b;
+  padding: 24px;       
+  border-left: 8px solid var(--color-primary);
+  border-radius: 12px; 
+}
