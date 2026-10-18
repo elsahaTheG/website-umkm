@@ -10,10 +10,9 @@
   --color-focus: #2563eb;            
   --color-surface-white: #ffffff;    
   
-  /* [KETENTUAN 1] Revisi & Tambahan Token Warna Berbasis Fungsi */
-  --color-primary-hover: #00702c;    /* Token warna hover untuk interaksi */
-  --color-surface-muted: #1f3324;    /* Token warna permukaan sekunder kartu */
-  --color-accent: #f59e0b;           /* Token warna aksen tambahan */
+  --color-primary-hover: #00702c;    
+  --color-surface-muted: #1f3324;    
+  --color-accent: #f59e0b;           
 
   --space-1: 0.5rem;
   --space-2: 0.75rem;
@@ -24,9 +23,8 @@
   --radius-sm: 0.5rem;
   --radius-md: 0.875rem;
   
-  /* [KETENTUAN 2] Penambahan Pasangan Token Spacing & Radius Baru */
-  --space-md: 1.25rem;               /* Token spacing baru */
-  --radius-pill: 50px;               /* Token radius bentuk kapsul baru */
+  --space-md: 1.25rem;               
+  --radius-pill: 50px;               
 
   --shadow-card: 0 0.5rem 1.5rem rgb(0 0 0 / 0.2);
 }
@@ -88,6 +86,12 @@ a:hover {
   padding: var(--space-3) var(--space-4);
   background: var(--color-primary-strong); 
   border-bottom: 1px solid var(--color-primary-strong);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .site-footer {
@@ -173,7 +177,6 @@ p, li {
   font-weight: 800; 
 }
 
-/* [KETENTUAN 3 - Komponen 1: Tombol] Menggunakan token warna, spacing, & radius baru */
 .button,
 button {
   display: inline-block;
@@ -185,19 +188,19 @@ button {
   cursor: pointer;
   background: var(--color-primary); 
   border: 0;
-  border-radius: var(--radius-pill); /* Menerapkan token radius pill */
+  border-radius: var(--radius-pill); 
 }
 
 .button:hover,
 button:hover { 
   color: var(--color-text); 
-  background: var(--color-primary-hover); /* Menerapkan token warna hover baru */
+  background: var(--color-primary-hover); 
 }
 
 .hero button { 
   color: var(--color-text); 
   background: var(--color-primary); 
-  padding: var(--space-md) calc(var(--space-md) * 1.5); /* Menerapkan token spacing baru */
+  padding: var(--space-md) calc(var(--space-md) * 1.5); 
   border-radius: var(--radius-pill);
 }
 
@@ -247,16 +250,15 @@ section {
   margin-bottom: 32px; 
 }
 
-/* [KETENTUAN 3 - Komponen 2: Kartu Produk] Menggunakan token warna, spacing, & radius baru */
 .product-card,
 .media-card,
 table,
 form {
   margin-block: var(--space-3);
-  padding: var(--space-md);                   /* Menerapkan token spacing baru */
-  background: var(--color-surface-muted);     /* Menerapkan token warna permukaan sekunder baru */
+  padding: var(--space-md);                   
+  background: var(--color-surface-muted);     
   border: 1px solid var(--color-primary); 
-  border-radius: var(--radius-pill);          /* Menerapkan token radius pill baru */
+  border-radius: var(--radius-pill);          
   box-shadow: var(--shadow-card);
 }
 
@@ -434,22 +436,8 @@ section[aria-labelledby="preview-title"] {
   border-radius: 12px; 
 }
 
-/* PW1-P06-E05: Flexbox untuk Navigasi dan Product Card */
-.nav {
-  display: flex;
-  gap: var(--space-3);
-  align-items: center;
-  justify-content: space-between;
-}
-
 .brand {
   margin-bottom: 0;
-}
-
-.nav ul {
-  display: flex;
-  gap: var(--space-2);
-  flex-wrap: wrap;
 }
 
 .nav li {
@@ -479,34 +467,9 @@ section[aria-labelledby="preview-title"] {
   margin-top: auto;
 }
 
-/* PW1-P06-E06: CSS Grid untuk Hero, Product Grid, dan Gallery Grid */
-.hero {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: var(--space-4);
-  align-items: center;
-}
-
 .hero-image {
   width: 100%;
   border-radius: var(--radius-md);
-}
-
-.product-grid,
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-3);
-}
-
-.gallery-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.product-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
 }
 
 .hero-content {
@@ -544,4 +507,90 @@ section[aria-labelledby="preview-title"] {
   padding: var(--space-1) var(--space-2);
   background: var(--color-primary-strong);
   border-radius: var(--radius-sm);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+.nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  align-items: center;
+}
+.product-grid,
+.gallery-grid,
+.product-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.table-scroll:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+.table-scroll table {
+  min-width: 40rem; 
+}
+
+@media (min-width: 42rem) {
+  .nav ul { 
+    flex-direction: row; 
+  }
+  .gallery-grid { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero { 
+    grid-template-columns: 1.2fr 0.8fr; 
+  }
+  .product-grid,
+  .product-list { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+  }
+}
+
+@media (min-width: 60rem) {
+  .nav { 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-between; 
+  }
+  .product-grid,
+  .product-list { 
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
+  }
+}
+
+fieldset label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-block: var(--space-1);
+  cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0;
+  accent-color: var(--color-primary); 
 }
