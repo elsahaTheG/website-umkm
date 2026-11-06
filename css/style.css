@@ -685,3 +685,9 @@ input[type="checkbox"] {
     margin-top: 0;
   }
 }
+
+#produk-unggulan {
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-top: var(--space-1);
+}

@@ -8,83 +8,86 @@ const produkUmkm = [
   { nama: "Python Peach Tea", kategori: "Teh Spesial", harga: 8000, stok: 0, unggulan: false },
 ];
 
+produkUmkm.forEach((produk) => {
+  console.log("Debug produk:", produk.nama, "stok:", produk.stok);
+});
 console.table(produkUmkm);
 
-const formatRupiah = new Intl.NumberFormat("id-ID", {
-  style: "currency",
-  currency: "IDR",
-  maximumFractionDigits: 0,
-});
+function formatRupiah(nilai) {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    maximumFractionDigits: 0,
+  }).format(nilai);
+}
 
 function statusStok(stok) {
   if (stok === 0) {
     return { label: "Habis", className: "empty" };
-  } else if (stok <= 5) {
+  } 
+  if (stok <= 5) {
     return { label: "Stok terbatas", className: "warning" };
-  } else {
-    return { label: "Tersedia", className: "success" };
-  }
+  } 
+  return { label: "Tersedia", className: "success" };
 }
 
 function labelKategori(kategori) {
   switch (kategori) {
-    case "Teh Spesial":
-      return "Racikan spesial andalan";
-    case "Teh Reguler":
-      return "Pilihan basic mahasiswa";
-    case "Teh Segar":
-      return "Varian segar tanpa gula";
-    default:
-      return "Produk Teh Saha";
+    case "Teh Spesial": return "Racikan spesial andalan";
+    case "Teh Reguler": return "Pilihan basic mahasiswa";
+    case "Teh Segar": return "Varian segar tanpa gula";
+    default: return "Produk Teh Saha";
   }
+}
+
+function buatKartuProduk(produk) {
+  const status = statusStok(produk.stok);
+  const kategori = labelKategori(produk.kategori);
+  
+  let badgeUnggulan = "";
+  if (produk.unggulan === true) {
+    badgeUnggulan = `<span class="product-badge" style="background: var(--color-accent); color: #fff; margin-left: 0.5rem;">⭐ Pilihan</span>`;
+  }
+
+  const labelAksi = produk.stok > 0 ? "Pesan sekarang" : "Hubungi admin";
+  const hargaTampil = formatRupiah(produk.harga).replace(/\s/g, '');
+
+  return `
+    <article class="product-card">
+      <div style="display: flex; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+          <span class="product-badge ${status.className}">${status.label}</span>
+          ${badgeUnggulan}
+      </div>
+      <h3 style="margin-top: 0;">${produk.nama}</h3>
+      <p>${kategori}</p>
+      <p class="price">${hargaTampil}</p>
+      <div class="card-actions">
+        <a class="button" href="kontak.html">${labelAksi}</a>
+        <a href="#harga-title">Lihat tabel harga</a>
+      </div>
+    </article>
+  `;
 }
 
 function renderProduk() {
   const grid = document.querySelector("#produk-dinamis");
   const ringkasan = document.querySelector("#produk-ringkasan");
+  const unggulan = document.querySelector("#produk-unggulan"); 
   
-  if (!grid || !ringkasan) {
+  if (!grid || !ringkasan || !unggulan) {
+    console.warn("Target render produk belum lengkap.");
     return;
   }
   
-  let jumlahTersedia = 0;
-  let markup = "";
+  const produkTersedia = produkUmkm.filter((produk) => produk.stok > 0);
+  const produkUnggulan = produkUmkm.find((produk) => produk.unggulan === true);
+  const markupProduk = produkTersedia.map(buatKartuProduk).join("");
   
-  for (const produk of produkUmkm) {
-    const status = statusStok(produk.stok);
-    const kategori = labelKategori(produk.kategori);
-    
-    if (produk.stok > 0) {
-      jumlahTersedia += 1;
-    }
-
-    let badgeUnggulan = "";
-    if (produk.unggulan === true) {
-      badgeUnggulan = `<span class="product-badge" style="background: var(--color-accent); color: #fff; margin-left: 0.5rem;">⭐ Pilihan</span>`;
-    }
-
-    const labelAksi = produk.stok > 0 ? "Pesan sekarang" : "Hubungi admin";
-    const hargaTampil = formatRupiah.format(produk.harga).replace(/\s/g, '');
-    
-    markup += `
-      <article class="product-card">
-        <div style="display: flex; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
-            <span class="product-badge ${status.className}">${status.label}</span>
-            ${badgeUnggulan}
-        </div>
-        <h3 style="margin-top: 0;">${produk.nama}</h3>
-        <p>${kategori}</p>
-        <p class="price">${hargaTampil}</p>
-        <div class="card-actions">
-          <a class="button" href="kontak.html">${labelAksi}</a>
-          <a href="#harga-title">Lihat tabel harga</a>
-        </div>
-      </article>
-    `;
-  }
-  
-  grid.innerHTML = markup;
-  ringkasan.textContent = `${jumlahTersedia} produk tersedia dari ${produkUmkm.length} data.`;
+  grid.innerHTML = markupProduk;
+  ringkasan.textContent = `${produkTersedia.length} produk tersedia dari ${produkUmkm.length} data.`;
+  unggulan.textContent = produkUnggulan 
+    ? `Produk unggulan: ${produkUnggulan.nama}` 
+    : "Belum ada produk unggulan.";
 }
 
 document.addEventListener("DOMContentLoaded", renderProduk);
