@@ -691,3 +691,39 @@ input[type="checkbox"] {
   color: var(--color-accent);
   margin-top: var(--space-1);
 }
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block: 1rem 1.5rem;
+}
+.filter-button {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 0.65rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.filter-button:hover,
+.filter-button:focus-visible {
+  border-color: var(--color-primary);
+  outline: 3px solid rgb(0 143 57 / 20%);
+  outline-offset: 2px;
+}
+.filter-button.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text);
+}
+.empty-state {
+  grid-column: 1 / -1;
+  border: 1px dashed var(--color-muted);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: var(--color-surface-soft);
+  color: var(--color-text);
+  text-align: center;
+}

@@ -32,14 +32,22 @@
         <p>Pilih racikan es teh segar kami untuk menemani waktu belajar, bekerja, dan berdiskusi.</p>
       </section>
 
-     <section class="section" aria-labelledby="produk-dinamis-title">
+      <section class="product-section" aria-labelledby="produk-title">
         <div class="section-header">
-          <p class="eyebrow">Data JavaScript</p>
-          <h2 id="produk-dinamis-title">Produk dari Data Lokal</h2>
-          <p id="produk-ringkasan">Data produk akan dimuat melalui JavaScript.</p>
-          <p id="produk-unggulan">Produk unggulan akan ditentukan melalui JavaScript.</p>
+          <p class="eyebrow">Katalog</p>
+          <h2 id="produk-title">Produk Unggulan Teh Saha</h2>
+          <p id="produk-status" class="produk-status">Produk belum dimuat.</p>
         </div>
-        <div id="produk-dinamis" class="product-grid"></div>
+        
+        <div class="filter-bar" aria-label="Filter kategori produk">
+          <button type="button" class="filter-button is-active" data-filter="Semua">Semua</button>
+          <button type="button" class="filter-button" data-filter="Teh Spesial">Teh Spesial</button>
+          <button type="button" class="filter-button" data-filter="Teh Reguler">Teh Reguler</button>
+          <button type="button" class="filter-button" data-filter="Teh Segar">Teh Segar</button>
+          <button type="button" class="filter-button" data-filter="Kopi">Kopi</button> 
+        </div>
+        
+        <div id="produk-grid" class="product-grid" aria-live="polite"></div>
       </section>
 
       <section aria-labelledby="kategori-title">
@@ -179,6 +187,6 @@
       <p>&copy; 2026 Teh Saha. Data pada halaman ini bersifat dummy.</p>
     </footer>
 
-    
+    <script src="js/script.js"></script>
   </body>
 </html>
